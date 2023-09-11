@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def divisible_by_2(my_list=[]):
-    newList = []
-    for i in my_list:
-        newList.append(i % 2 == 0)
-    return is divisible
+    is_divisible = []
+    for num in my_list:
+        is_divisible.append(num % 2 == 0)
+    return is_divisible
