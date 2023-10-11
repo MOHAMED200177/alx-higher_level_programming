@@ -6,13 +6,15 @@ from sys import argv
 # load functions
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+
 file = "add_item.json"
+file_list = list(argv[1:])
 
 try:
     json_object = load_from_json_file(file)
-    json_object += argv[1:]
-    save_to_json_file(json_object, file)
+except Exception:
+    json_object = []
 
-except FileNotFoundError:
-    save_to_json_file(argv[1:], file)
+json_object.extend(file_list)
 
+save_to_json_file(json_object, file)
