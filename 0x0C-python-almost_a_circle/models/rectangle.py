@@ -82,16 +82,15 @@ class Rectangle(Base):
 
     def display(self):
         """rectangle area"""
-        display_ractangle = '\n' * self.y +\
-              (self.height * (' ' * self.x + self.width * '#' + "\n"))
-        
-        print(display_ractangle, end="")
+        rectangle = self.y * "\n" + (self.height * (self.x * " " +
+                                                    self.width * "#" + "\n"))
+        print(rectangle, end="")
 
     def __str__(self):
         """string method"""
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} "\
             f"- {self.width}/{self.height}"
-    
+
     def attr_update(self, id=None, height=None, width=None, x=None, y=None):
         '''updates attributes'''
         if id is not None:

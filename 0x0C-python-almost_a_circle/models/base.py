@@ -6,6 +6,7 @@ from json import dumps
 from json import loads
 import csv
 
+
 class Base:
     """Base Class"""
 
@@ -20,6 +21,7 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """dictionaries to json"""
