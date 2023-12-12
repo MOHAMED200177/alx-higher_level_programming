@@ -1,9 +1,8 @@
 #!/usr/bin/node
-if (process.argv.length >= 4) {
-  const arg1 = process.argv[2];
-  const arg2 = process.argv[3];
-
-  console.log(`${arg1} is ${arg2}`);
+// script that prints the first argument passed to it
+const argv = process.argv[2];
+if (argv === undefined) {
+  console.log("No argument");
 } else {
-  console.log("Please provide at least two arguments.");
+  console.log(argv);
 }
