@@ -1,4 +1,5 @@
 #!/usr/bin/node
+
 // script that prints a square
 const size = process.argv[2];
 if (isNaN(size)) {

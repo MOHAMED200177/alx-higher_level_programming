@@ -1,4 +1,5 @@
 #!/usr/bin/node
+
 // script that computes and prints a factorial
 const argv = parseInt(process.argv[2]);
 function Factorialize (num) {
