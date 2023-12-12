@@ -1,5 +1,5 @@
-#!/usr/bin/node
-const arry = ['C is fun','Python is cool','JavaScript is amazing'];
-for(let i = 0; i < arry.length; i++) {
-    console.log(arry[i]);
+const languages = ["C is fun", "Python is cool", "JavaScript is amazing"];
+
+for (let i = 0; i < languages.length; i++) {
+  console.log(languages[i]);
 }
