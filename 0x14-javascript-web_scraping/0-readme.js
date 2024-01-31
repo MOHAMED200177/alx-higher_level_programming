@@ -1,7 +1,8 @@
 #!/usr/bin/node
 // read arg file
 const fs = require('fs');
-fs.readFile('' + process.argv[2], 'utf8', (error, data) => {
+const filePath = process.argv[2];
+fs.readFile(filePath, "utf8", function (error, data) {
   if (error) {
     console.log(error);
   } else console.log(data);
