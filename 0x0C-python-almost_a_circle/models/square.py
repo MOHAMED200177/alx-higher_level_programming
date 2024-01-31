@@ -27,25 +27,22 @@ class Square(Rectangle):
         self.width = value
         self.height = self.width
 
-    def attr_update(self, id=None, height=None, width=None, x=None, y=None):
-        '''updates attributes'''
-        if id is not None:
-            self.id = id
-        if height is not None:
-            self.height = height
-        if width is not None:
-            self.width = width
-        if x is not None:
-            self.x = x
-        if y is not None:
-            self.y = y
-
     def update(self, *args, **kwargs):
-        """update rectangle"""
+        """update square"""
+
+        # change every attr to args value
         if args:
-            self.attr_update(*args)
-        elif kwargs:
-            self.attr_update(**kwargs)
+            # attr list
+            attr_list = ["id", "size", "x", "y"]
+            for i, value in enumerate(args):
+                if i < len(attr_list):
+                    setattr(self, attr_list[i], value)
+        else:
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
+                else:
+                    raise ValueError(f"{key} is not attribute in this class")
 
     def to_dictionary(self):
         """square to dictionary"""

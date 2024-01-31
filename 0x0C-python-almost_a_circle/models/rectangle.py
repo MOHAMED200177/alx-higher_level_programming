@@ -9,6 +9,7 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """inint
+        args:
             width: int
             hight: int
             x: int
@@ -22,12 +23,12 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """width rectangle  getter"""
+        """width getter"""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """width rectangle setter"""
+        """width setter"""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -36,12 +37,12 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """height rectangle  getter"""
+        """height getter"""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """height rectangle  setter"""
+        """height setter"""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -81,42 +82,38 @@ class Rectangle(Base):
         return self.height * self.width
 
     def display(self):
-        """rectangle area"""
+        """calculate rectangle area"""
         rectangle = self.y * "\n" + (self.height * (self.x * " " +
                                                     self.width * "#" + "\n"))
         print(rectangle, end="")
 
-    def __str__(self):
-        """string method"""
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} "\
-            f"- {self.width}/{self.height}"
-
-    def attr_update(self, id=None, height=None, width=None, x=None, y=None):
-        '''updates attributes'''
-        if id is not None:
-            self.id = id
-        if height is not None:
-            self.height = height
-        if width is not None:
-            self.width = width
-        if x is not None:
-            self.x = x
-        if y is not None:
-            self.y = y
-
     def update(self, *args, **kwargs):
         """update rectangle"""
+
+        # change every attr to args value
         if args:
-            self.attr_update(*args)
-        elif kwargs:
-            self.attr_update(**kwargs)
+            # attr list
+            attr_list = ["id", "width", "height", "x", "y"]
+            for i, value in enumerate(args):
+                if i < len(attr_list):
+                    setattr(self, attr_list[i], value)
+        else:
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
+                else:
+                    raise ValueError(f"{key} is not attribute in this class")
 
     def to_dictionary(self):
         """retangle to dictionary"""
-        retangle_dic = {}
-        retangle_dic["id"] = self.id
-        retangle_dic["width"] = self.width
-        retangle_dic["height"] = self.height
-        retangle_dic["x"] = self.x
-        retangle_dic["y"] = self.y
-        return retangle_dic
+        retangle_dict = {}
+        retangle_dict["id"] = self.id
+        retangle_dict["width"] = self.width
+        retangle_dict["height"] = self.height
+        retangle_dict["x"] = self.x
+        retangle_dict["y"] = self.y
+        return retangle_dict
+    def __str__(self):
+        """string method"""
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} " \
+            f"- {self.width}/{self.height}"

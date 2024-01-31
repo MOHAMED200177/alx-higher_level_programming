@@ -1,3 +1,3 @@
--- Delete rows
--- Execute: cat 13-change_class.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
+--  removes all records with a score <= 5
+
 DELETE FROM second_table WHERE score <= 5;
