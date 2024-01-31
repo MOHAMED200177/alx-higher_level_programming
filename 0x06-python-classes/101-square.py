@@ -61,8 +61,7 @@ class Square:
         if self.size == 0:
             return ""
         else:
-            my_string = (("\n" * self.position[1]) +
+            return ((("\n" * self.position[1]) +
                     ((" " * self.position[0]) +
-                     ("#" * self.size + "\n")) * (self.size))
-
-            return my_string.rstrip("\n")
+                     ("#" * self.size + "\n")) * (self.size-1)) +
+                    ((" " * self.position[0]) + ("#" * self.size)))

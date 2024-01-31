@@ -6,9 +6,9 @@ from json import loads
 
 def from_json_string(my_str):
     """from_json_string
-    this function taks json object and convert it to string
+        returns an object (Python data structure) represented by a JSON string:
     arges:
-        my_str: string json obj
+        my_str: string json object
     """
 
     return loads(my_str)

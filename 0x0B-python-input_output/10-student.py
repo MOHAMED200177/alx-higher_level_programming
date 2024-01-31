@@ -18,13 +18,13 @@ class Student:
 
     def to_json(self, attrs=None):
         """class to json"""
-        attr_dict = self.__dict__
+        my_dic = self.__dict__
         if attrs is None:
-            return attr_dict
+            return my_dic
 
         new_dict = {}
         for key in attrs:
-            value = attr_dict.get(key)
+            value = my_dic.get(key)
             if value:
                 new_dict[key] = value
         return new_dict
