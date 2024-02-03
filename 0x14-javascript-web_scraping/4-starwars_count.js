@@ -1,11 +1,12 @@
 #!/usr/bin/node
-// get request
 const request = require('request');
-const url = process.argv[2];
-if (!url) process.exit();
-request.get(url, (error, response, body) => {
+request(process.argv[2], function (error, response, body) {
   if (!error) {
-    const count = body.split('/people/18/').length - 1;
-    console.log(count);
+    const results = JSON.parse(body).results;
+    console.log(results.reduce((count, movie) => {
+      return movie.characters.find((character) => character.endsWith('/18/'))
+        ? count + 1
+        : count;
+    }, 0));
   }
 });
